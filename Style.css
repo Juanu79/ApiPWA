@@ -1,0 +1,228 @@
+/* Variables globales para colores */
+:root {
+  --color-bg: #001F3F; /* Azul oscuro */
+  --color-accent: #00FF66; /* Verde brillante */
+  --color-nav-bg: #002A50; /* Azul más profundo */
+  --color-text: #ffffff; /* Texto blanco para contraste */
+  --color-hover: #00CC55; /* Verde un poco más oscuro */
+  --color-border: #004080; /* Azul para bordes */
+  --color-light-bg: #003366; /* Azul intermedio */
+  --spacing-small: 10px;
+  --spacing-medium: 15px;
+  --radius-small: 8px;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url('Fondo.png') no-repeat center fixed;
+  background-size: cover; /* Ajusta la imagen al tamaño completo */
+  position: relative;
+  color: var(--color-text);
+}
+
+/* Superposición para mejorar la legibilidad */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 31, 63, 0.7); /* Azul oscuro con transparencia */
+  z-index: -1;
+}
+
+/* Navegación superior */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  background: var(--color-nav-bg);
+  padding: var(--spacing-small);
+}
+
+/* Estilos de botones */
+.top-nav .tab-button,
+.bottom-nav .bottom-button {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: var(--spacing-small) var(--spacing-medium);
+  transition: background 0.3s;
+}
+
+.top-nav .tab-button:hover,
+.bottom-nav .bottom-button:hover {
+  background: var(--color-hover);
+}
+
+/* Secciones de contenido */
+.tab-content {
+  padding: 20px;
+  display: none;
+  background: rgba(0, 42, 80, 0.85); /* Fondo semitransparente */
+  border-radius: var(--radius-small);
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menú inferior */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color-nav-bg);
+  display: flex;
+  justify-content: space-around;
+  padding: var(--spacing-small);
+  color: var(--color-text);
+  align-items: center;
+}
+
+/* Versión de la aplicación */
+.app-version {
+  font-size: 0.9rem;
+  text-align: center;
+  padding-top: var(--spacing-small);
+  font-weight: bold;
+}
+
+/* Botones e inputs generales */
+button {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  margin-top: var(--spacing-small);
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: var(--color-hover);
+  color: var(--color-text);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  padding: var(--spacing-small);
+  margin: var(--spacing-small) 0;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background-color: rgba(0, 42, 80, 0.85);
+  color: var(--color-text);
+}
+
+/* Secciones */
+section {
+  background: rgba(0, 42, 80, 0.85);
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: var(--radius-small);
+  box-shadow: 0 2px 5px var(--color-border);
+}
+
+/* Formularios */
+form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-medium);
+}
+
+/* Listados */
+#adviceList,
+#filteredAdviceList,
+#searchResults,
+#favoritesList,
+#desafioContent {
+  margin-top: var(--spacing-small);
+}
+
+/* Elementos individuales */
+.advice-item,
+.favorite-item,
+.desafio-item {
+  background: var(--color-nav-bg);
+  padding: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+  border-radius: var(--radius-small);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.advice-item button,
+.favorite-item button {
+  margin-left: var(--spacing-small);
+  background: var(--color-accent);
+}
+
+.advice-item button:hover,
+.favorite-item button:hover {
+  background: var(--color-hover);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: var(--spacing-small);
+  background: var(--color-nav-bg);
+  color: var(--color-text);
+  font-size: 0.8rem;
+}
+
+.footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo para la sección de API */
+.api-content {
+  background: rgba(0, 42, 80, 0.85);
+  color: var(--color-text);
+  padding: var(--spacing-medium);
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: var(--radius-small);
+  box-shadow: 0 2px 5px var(--color-border);
+  text-align: center;
+  overflow: hidden; /* Evita que la imagen desborde el cuadro */
+}
+
+/* Ajuste para la imagen dentro del cuadro */
+.api-content img {
+  width: 100%; /* La imagen ocupa todo el ancho del cuadro */
+  height: auto; /* Ajusta la altura proporcionalmente */
+  border-radius: var(--radius-small); /* Redondea esquinas */
+}
